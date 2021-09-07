@@ -1,0 +1,336 @@
+#app {
+    display: flex;
+    flex-direction: row;
+
+    // Overlay ==============
+    @include media-breakpoint-down('md') {
+        .overlay {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            transition: all .2s;
+            margin-left: -100%;
+            z-index: 1;
+            background: rgba(16, 25, 36, 0.4);
+
+            .toggled & {
+                margin: 0;
+            }
+        }
+    }
+
+    // Overlay ==============
+
+    // Sidebar Light ==============
+    .sidebar {
+        flex-basis: 20rem;
+        min-height: 100vh;
+        display: flex;
+        z-index: 2;
+        flex-direction: column;
+        background: $lighter;
+        border-right: 1px solid $gray-300;
+        transition: all .2s;
+
+        @include media-breakpoint-down('md') {
+            border: 0;
+            position: fixed;
+            margin-left: -23rem;
+            width: 20rem;
+
+            .toggled & {
+                margin: 0;
+                max-height: 100vh;
+                overflow-y: auto;
+            }
+        }
+
+        // Sidebar Header
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem 1rem;
+
+            @include media-breakpoint-down('md') {
+                justify-content: center;
+                background: $white;
+                border-bottom: 1px solid $gray-300;
+            }
+
+            .close-indicator {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                color: $medium;
+            }
+        }
+
+        // Sidebar Header
+
+        .sidebar-wrapper {
+            list-style: none;
+            padding: 1rem .5rem;
+
+            .sidebar-heading {
+                font-size: 1rem;
+                padding: .5rem 1rem;
+                font-weight: bold;
+
+                &:not(:first-child) {
+                    margin-top: .5rem;
+                }
+            }
+
+            .sidebar-link::after,
+            .submenu-link::after {
+                font-size: .75rem;
+            }
+
+            .sidebar-item {
+                border: 1px solid transparent;
+
+                &.mm-active {
+                    background: $white;
+                    border-radius: .5rem;
+                    border-color: $gray-300;
+
+                    .sidebar-link.drop-trigger[aria-expanded=true] {
+                        border-color: $gray-300;
+                        border-radius: .5rem .5rem 0 0;
+
+                        &:active,
+                        &:hover,
+                        &:focus {
+                            color: $primary;
+                            background: mix($white, $primary, 90%);
+                        }
+                    }
+                }
+
+                .sidebar-link {
+                    border-bottom: 1px solid transparent;
+                    padding: .5rem 1rem;
+                    display: flex;
+                    color: $dark;
+                    transition: all .2s;
+                    align-items: center;
+                    border-radius: .5rem;
+
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &.active {
+                        background: $primary;
+                        color: $white;
+                        text-decoration: none;
+                    }
+
+                    &.drop-trigger[aria-expanded=true] {
+                        background: mix($white, $primary, 85%);
+                        color: $primary;
+                    }
+
+                    &.drop-trigger {
+                        &[aria-expanded=false]:after {
+                            margin-left: auto;
+                            content: "\f067";
+                            font-family: 'Font Awesome 5 Free';
+                            font-weight: 900;
+                        }
+
+                        &[aria-expanded=true]:after {
+                            margin-left: auto;
+                            content: "\f068";
+                            font-family: 'Font Awesome 5 Free';
+                            font-weight: 900;
+                        }
+                    }
+
+                    .icon {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                        margin-right: .5rem;
+
+                        .fas,
+                        .bx {
+                            font-size: 20px;
+                            letter-spacing: normal;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+
+                .submenu {
+                    list-style: none;
+                    padding: 0;
+
+                    .submenu-wrapper {
+                        padding: 0;
+                        position: relative;
+
+                        .submenu-item {
+                            &:last-child {
+                                .submenu-link,
+                                .submenu .submenu-link {
+                                    border-radius: 0 0 .5rem .5rem;
+                                }
+
+                                &[aria-expanded=true] {
+                                    border-radius: 0 !important;
+                                }
+                            }
+
+                            .submenu-link {
+                                padding: .5rem 1.25rem;
+                                border-radius: 0;
+                                display: flex;
+                                align-items: center;
+                                color: $dark;
+                                transition: all 0.3s;
+                                text-decoration: none;
+
+                                &:hover {
+                                    color: $primary;
+                                    background-color: mix($white, $primary, 85%);
+                                }
+
+                                &:focus,
+                                &.active,
+                                &:active,
+                                &[aria-expanded=true] {
+                                    color: $white;
+                                    background-color: $primary;
+                                }
+
+                                &.drop-trigger {
+                                    &[aria-expanded=false]:after {
+                                        margin-left: auto;
+                                        content: "\f067";
+                                        font-family: 'Font Awesome 5 Free';
+                                        font-weight: 900;
+                                        margin-right: -.25rem;
+                                    }
+
+                                    &[aria-expanded=true]:after {
+                                        margin-left: auto;
+                                        content: "\f068";
+                                        font-family: 'Font Awesome 5 Free';
+                                        font-weight: 900;
+                                        margin-right: -.25rem;
+                                    }
+                                }
+                            }
+
+                            .submenu {
+                                .submenu-wrapper {
+                                    .submenu-link {
+                                        padding-left: 1.5rem;
+                                        border-radius: 0 !important;
+
+                                        &:before {
+                                            content: '\f068';
+                                            font-family: 'Font Awesome 5 Free';
+                                            font-weight: 900;
+                                            margin-right: .5rem;
+                                        }
+
+                                        &:after {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Sidebar Light ==============
+
+    // Sidebar Dark ==============
+    .sidebar-dark {
+        background: $dark;
+        color: $gray-200;
+
+        @each $color, $value in $theme-colors {
+            &.bg-#{$color} {
+                .sidebar-wrapper {
+                    .sidebar-item {
+                        border: 0;
+
+                        &.mm-active {
+                            border-radius: .5rem;
+
+                            .sidebar-link.drop-trigger[aria-expanded=true] {
+                                &:active,
+                                &:hover,
+                                &:focus {
+                                    color: $value;
+                                    background: mix($white, $value, 90%);
+                                }
+                            }
+                        }
+
+                        .sidebar-link {
+                            color: rgba($white, .7);
+
+                            &:hover,
+                            &:focus,
+                            &:active {
+                                background: transparent;
+                                color: $white;
+                            }
+
+                            &.drop-trigger[aria-expanded=true] {
+                                color: $value;
+                                background: mix($white, $value, 90%);
+                            }
+
+                            &.active {
+                                background: rgba($white, .15);
+                            }
+                        }
+
+                        .submenu {
+                            .submenu-wrapper {
+                                .submenu-item {
+                                    .submenu-link {
+                                        &:hover {
+                                            color: $value;
+                                            background-color: mix($white, $value, 90%);
+                                        }
+
+                                        &:focus,
+                                        &.active,
+                                        &:active,
+                                        &[aria-expanded=true] {
+                                            color: $white;
+                                            background-color: $value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Sidebar Dark ==============
+
+    .admin-container {
+        @include media-breakpoint-up('md') {
+            flex-basis: calc(100% - 20rem);
+        }
+
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}

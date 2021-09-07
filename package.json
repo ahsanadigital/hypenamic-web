@@ -1,0 +1,56 @@
+{
+  "private": false,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "axios": "^0.21",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.1.14",
+    "resolve-url-loader": "4.0.0",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1"
+  },
+  "name": "tiket",
+  "version": "1.0.0",
+  "description": "Aplikasi penjualan tiket online By Hypenamic Studio (CV. Aldi Production) & Dasa Kreativa Studio",
+  "main": "resources/js/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasakreativa/ticketing-online.git"
+  },
+  "author": "Dasa Kreativa Studio",
+  "license": "MIT",
+  "dependencies": {
+    "@fancyapps/ui": "^4.0.0-alpha.4",
+    "boxicons": "^2.0.7",
+    "css-loader": "2.1.0",
+    "eva-icons": "^1.1.3",
+    "feathericon": "^1.0.2",
+    "ionicons": "2.0",
+    "metismenu": "^3.0.7",
+    "moment": "^2.29.1",
+    "nicescroll": "^3.7.4",
+    "node-sass": "^6.0.1",
+    "sass": "~1.32",
+    "select2": "^4.1.0-rc.0",
+    "sweetalert2": "^11.0.20"
+  },
+  "bugs": {
+    "url": "https://github.com/dasakreativa/ticketing-online/issues"
+  },
+  "homepage": "https://github.com/dasakreativa/ticketing-online#readme",
+  "directories": {
+    "test": "tests"
+  }
+}
