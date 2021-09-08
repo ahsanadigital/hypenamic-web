@@ -44,6 +44,8 @@ Route::prefix('administrator')->group(function() {
     Route::any('/event/ticket/edit/process', [\App\Http\Controllers\admin\EventTicketController::class, 'editTicket'])->name('admin.event-ticket-editProcess');
     Route::any('/event/ticket/detail', [\App\Http\Controllers\admin\EventTicketController::class, 'details'])->name('admin.event-ticket-detail');
 
+    Route::any('/pelanggan/data', [\App\Http\Controllers\admin\PelangganAdminController::class, 'datatable'])->name('admin.pelanggan-data');
+
     Route::any('/category/data', [\App\Http\Controllers\admin\EventCategoryController::class, 'datatable'])->name('admin.category-data');
     Route::any('/category/edit', [\App\Http\Controllers\admin\EventCategoryController::class, 'edit'])->name('admin.category-edit');
     Route::any('/category/add', [\App\Http\Controllers\admin\EventCategoryController::class, 'add'])->name('admin.category-add');

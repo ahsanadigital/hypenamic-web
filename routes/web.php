@@ -109,6 +109,8 @@ Route::prefix('administrator')->group(function () {
 
         Route::prefix('pelanggan')->group(function() {
             Route::any('/', [\App\Http\Controllers\admin\PelangganAdminController::class, 'main'])->name('admin.pelanggan-main');
+            Route::any('/add', [\App\Http\Controllers\admin\PelangganAdminController::class, 'add'])->name('admin.pelanggan-add');
+            Route::any('/{id}/view', [\App\Http\Controllers\admin\PelangganAdminController::class, 'view'])->name('admin.pelanggan-view');
         });
 
         Route::prefix('event/category')->group(function() {

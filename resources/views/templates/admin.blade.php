@@ -80,7 +80,7 @@
                             </div>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item{{ Route::is('admin.pelanggan-*') ? ' mm-active' : '' }}">
                         <a href="#" class="sidebar-link drop-trigger" aria-expanded="false">
                             <span class="icon"><i class="bx bx-user"></i></span>
                             <span class="content">Data Pelanggan</span>
@@ -88,7 +88,7 @@
                         <ul class="submenu" data-depth="first">
                             <div class="submenu-wrapper">
                                 <li class="submenu-item">
-                                    <a href="{{ route('admin.pelanggan-main') }}" class="submenu-link">Semua Pelanggan</a>
+                                    <a href="{{ route('admin.pelanggan-main') }}" class="submenu-link{{ Route::is('admin.pelanggan-main') ? ' active' : '' }}">Semua Pelanggan</a>
                                 </li>
                                 <li class="submenu-item">
                                     <a href="javascript:void(0)" class="submenu-link">Tambah Pelanggan</a>
